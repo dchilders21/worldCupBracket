@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import UserInfo from './userInfo'
 import GroupMatches from './groupMatches'
-import { push } from 'react-router-redux'
 import {
   increment,
   decrement,
@@ -14,7 +13,7 @@ import addData from '../../modules/user'
 
 const slideComponents = [
   UserInfo,
-  GroupMatches
+  GroupMatches,
 ]
 
 class BracketContainer extends React.Component {
@@ -33,10 +32,10 @@ class BracketContainer extends React.Component {
     console.log('CURRENT STEP: ' + currentStep);
     let RenderingComponent;
     if (currentStep > 0) {
-      console.log(' ============= ');
+      //console.log(' ============= ');
       RenderingComponent = slideComponents[1];
     } else {
-      console.log(' ++++++++++++++ ');
+      // console.log(' ++++++++++++++ ');
       RenderingComponent = slideComponents[0];
     }
     return(

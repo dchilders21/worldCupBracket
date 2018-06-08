@@ -13,6 +13,10 @@ let UserInfo = props => {
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email" />
       </div>
+      <div>
+        <label htmlFor="bracketName">Bracket Name</label>
+        <Field name="bracketName" component="input" type="text" />
+      </div>
       <button type="submit">Next</button>
     </form>
   )

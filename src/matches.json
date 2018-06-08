@@ -30,28 +30,196 @@
 	{
 		"groupB": {
 			"match1": {
-				"Russia": "",
-				"Saudi Arabia": ""
+				"Morocco": "",
+				"IR Iran": ""
 			},
 			"match2": {
-				"Egypt": "",
-				"Uruguay": ""
+				"Portugal": "",
+				"Spain": ""
 			},
 			"match3": {
-				"Russia": "",
-				"Egypt": ""
+				"Portugal": "",
+				"Morocco": ""
 			},
 			"match4": {
-				"Uruguay": "",
-				"Saudi Arabia": ""
+				"IR Iran": "",
+				"Spain": ""
 			},
 			"match5": {
-				"Uruguay": "",
-				"Russia": ""
+				"Spain": "",
+				"Morocco": ""
 			},
 			"match6": {
-				"Saudi Arabia": "",
-				"Egypt": ""
+				"IR Iran": "",
+				"Portugal": ""
+			}
+		}
+	},
+	{
+		"groupC": {
+			"match1": {
+				"France": "",
+				"Australia": ""
+			},
+			"match2": {
+				"Peru": "",
+				"Denmark": ""
+			},
+			"match3": {
+				"Denmark": "",
+				"Australia": ""
+			},
+			"match4": {
+				"France": "",
+				"Peru": ""
+			},
+			"match5": {
+				"Australia": "",
+				"Peru": ""
+			},
+			"match6": {
+				"Denmark": "",
+				"France": ""
+			}
+		}
+	},
+	{
+		"groupD": {
+			"match1": {
+				"Argentina": "",
+				"Iceland": ""
+			},
+			"match2": {
+				"Croatia": "",
+				"Nigeria": ""
+			},
+			"match3": {
+				"Argentina": "",
+				"Croatia": ""
+			},
+			"match4": {
+				"Nigeria": "",
+				"Iceland": ""
+			},
+			"match5": {
+				"Nigeria": "",
+				"Argentina": ""
+			},
+			"match6": {
+				"Iceland": "",
+				"Croatia": ""
+			}
+		}
+	},
+	{
+		"groupE": {
+			"match1": {
+				"Costa Rica": "",
+				"Serbia": ""
+			},
+			"match2": {
+				"Brazil": "",
+				"Switzerland": ""
+			},
+			"match3": {
+				"Brazil": "",
+				"Costa Rica": ""
+			},
+			"match4": {
+				"Serbia": "",
+				"Switzerland": ""
+			},
+			"match5": {
+				"Serbia": "",
+				"Brazil": ""
+			},
+			"match6": {
+				"Switzerland": "",
+				"Costa Rica": ""
+			}
+		}
+	},
+	{
+		"groupF": {
+			"match1": {
+				"Germany": "",
+				"Mexico": ""
+			},
+			"match2": {
+				"Sweden": "",
+				"Korea Republic": ""
+			},
+			"match3": {
+				"Korea Republic": "",
+				"Mexico": ""
+			},
+			"match4": {
+				"Germany": "",
+				"Sweden": ""
+			},
+			"match5": {
+				"Korea Republic": "",
+				"Germany": ""
+			},
+			"match6": {
+				"Mexico": "",
+				"Sweden": ""
+			}
+		}
+	},
+	{
+		"groupG": {
+			"match1": {
+				"Belgium": "",
+				"Panama": ""
+			},
+			"match2": {
+				"Tunisia": "",
+				"England": ""
+			},
+			"match3": {
+				"Belgium": "",
+				"Tunisia": ""
+			},
+			"match4": {
+				"England": "",
+				"Panama": ""
+			},
+			"match5": {
+				"Panama": "",
+				"Tunisia": ""
+			},
+			"match6": {
+				"England": "",
+				"Belgium": ""
+			}
+		}
+	},
+	{
+		"groupH": {
+			"match1": {
+				"Colombia": "",
+				"Japan": ""
+			},
+			"match2": {
+				"Poland": "",
+				"Senegal": ""
+			},
+			"match3": {
+				"Japan": "",
+				"Senegal": ""
+			},
+			"match4": {
+				"Poland": "",
+				"Colombia": ""
+			},
+			"match5": {
+				"Japan": "",
+				"Poland": ""
+			},
+			"match6": {
+				"Senegal": "",
+				"Colombia": ""
 			}
 		}
 	}

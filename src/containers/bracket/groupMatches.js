@@ -9,6 +9,7 @@ class GroupMatches extends React.Component {
     // console.log(this.props.step);
   }
   render() {
+    const { handleSubmit, pristine, reset, submitting } = this.props
     const currentStep = this.props.step - 1;
     //const currentStep = 0;
     return(
@@ -19,7 +20,7 @@ class GroupMatches extends React.Component {
               return (
                 <div key={i}>
                 <p>{group}</p>
-                <form onSubmit={() => this.onSubmit()}>
+                <form onSubmit={handleSubmit}>
                   {Object.keys(matches[currentStep][group]).map(function(match, id){ return (
                       <div key={id}>
                       <p>{match}</p>
