@@ -39,8 +39,8 @@ class BracketContainer extends React.Component {
       RenderingComponent = slideComponents[0];
     }
     return(
-      <div>
-        <h1>Bracket Container</h1>
+      <div className="bracket__container">
+        <h1 className="heading--center">Bracket Container</h1>
         <div>
           <RenderingComponent onSubmit={this.submit} step={currentStep}/>
         </div>

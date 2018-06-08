@@ -1,5 +1,70 @@
-body {
+*,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+  body {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.flex-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-row {
+  flex-basis: 100%;
+}
+
+.flex-center-container p {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+}
+
+.flex-column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-alignment {
+  flex-basis: 50%;
+}
+
+.group__divisor {
+  padding: 5px;
+}
+
+.group__input {
+  width: 30px;
+}
+
+.heading--center {
+  text-align: center;
+}
+
+.bracket__container {
+  padding: 20px;
+}
+
+.user__submit-btn {
+  margin-top: 5px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.userInfo__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userInfo__container label {
+  text-align: center;
+  width: 100%;
 }

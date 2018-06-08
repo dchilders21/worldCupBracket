@@ -26,22 +26,29 @@ class GroupMatches extends React.Component {
                 <div key={i}>
                 <p>{group}</p>
                 <form onSubmit={handleSubmit}>
-                  {Object.keys(matches[currentStep][group]).map(function(match, id){ return (
-                      <div key={id}>
-                      <p>{match}</p>
-                      {Object.keys(matches[currentStep][group][match]).map(function(team, idx){ return (
-                        <div>
-                          <p key={idx}>{team}</p>
-                          <div>
-                            <label htmlFor={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`}>Team</label>
-                            <Field name={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`} component="input" type="text" />
+                  <div className="flex-center-container">
+                    {Object.keys(matches[currentStep][group]).map(function(match, id){ return (
+                        <div key={id} className="flex-row" style={{display: 'flex'}}>
+                        {Object.keys(matches[currentStep][group][match]).map(function(team, idx){
+                          console.log('Es odd', i%2);
+                          const currentOrder = (idx % 2) ? { order: 1} : {};
+                          const currentAlign = !(idx % 2) ? { justifyContent: 'flex-end'} : {justifyContent: 'flex-start'};
+                          return (
+                          <div className="flex-center-container flex-alignment" style={currentAlign}> 
+                            <div style={currentOrder}>
+                              <p key={idx}>{team}</p>
+                            </div>
+                            <div>
+                              <Field name={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`} component="input" type="text" className="group__input" />
+                            </div>
+                            {!(idx % 2) && <div className="group__divisor">:</div>}
                           </div>
+                        );})}
                         </div>
-                      );})}
-                      </div>
-                  );})}
+                    );})}
 
-                  <button type="submit">Next</button>
+                    <button type="submit">Next</button>
+                  </div>
                   </form>
                 </div>
               );
