@@ -8,6 +8,11 @@ class GroupMatches extends React.Component {
   componentDidMount() {
     // console.log(this.props.step);
   }
+
+  formatTeam = (team) => {
+    console.log(team);
+    return team.replace(/\s+/g, '-').toLowerCase();
+  }
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props
     const currentStep = this.props.step - 1;
@@ -28,8 +33,8 @@ class GroupMatches extends React.Component {
                         <div>
                           <p key={idx}>{team}</p>
                           <div>
-                            <label htmlFor={`team_${team}`}>Team</label>
-                            <Field name={`team_${team}`} component="input" type="text" />
+                            <label htmlFor={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`}>Team</label>
+                            <Field name={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`} component="input" type="text" />
                           </div>
                         </div>
                       );})}
