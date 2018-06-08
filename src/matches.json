@@ -1,0 +1,58 @@
+[
+	{
+		"groupA": {
+			"match1": {
+				"Russia": "",
+				"Saudi Arabia": ""
+			},
+			"match2": {
+				"Egypt": "",
+				"Uruguay": ""
+			},
+			"match3": {
+				"Russia": "",
+				"Egypt": ""
+			},
+			"match4": {
+				"Uruguay": "",
+				"Saudi Arabia": ""
+			},
+			"match5": {
+				"Uruguay": "",
+				"Russia": ""
+			},
+			"match6": {
+				"Saudi Arabia": "",
+				"Egypt": ""
+			}
+		}
+	},
+	{
+		"groupB": {
+			"match1": {
+				"Russia": "",
+				"Saudi Arabia": ""
+			},
+			"match2": {
+				"Egypt": "",
+				"Uruguay": ""
+			},
+			"match3": {
+				"Russia": "",
+				"Egypt": ""
+			},
+			"match4": {
+				"Uruguay": "",
+				"Saudi Arabia": ""
+			},
+			"match5": {
+				"Uruguay": "",
+				"Russia": ""
+			},
+			"match6": {
+				"Saudi Arabia": "",
+				"Egypt": ""
+			}
+		}
+	}
+]
