@@ -2,21 +2,23 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import matches from '../../matches'
+import matches from '../../matches_temp'
 
 class GroupMatches extends React.Component {
   componentDidMount() {
     // console.log(this.props.step);
   }
 
-  formatTeam = (team) => {
-    console.log(team);
-    return team.replace(/\s+/g, '-').toLowerCase();
-  }
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting, finalStep, prevStep } = this.props
     const currentStep = this.props.step - 1;
-    //const currentStep = 0;
+
+    const button = (this.props.step == finalStep) ? (
+      <button type="submit">Finish</button>
+    ) : (
+      <button type="submit">Next</button>
+    );
+
     return(
       <div>
         <h1>Group {currentStep}</h1>
@@ -45,10 +47,14 @@ class GroupMatches extends React.Component {
                           </div>
                         );})}
                         </div>
-                    );})}
-
-                    <button type="submit">Next</button>
-                  </div>
+                      );})}
+                      </div>
+                  {((currentStep - 1) < finalStep) &&
+                    <a onClick={prevStep}>
+                      Previous
+                    </a>
+                  }
+                  {button}
                   </form>
                 </div>
               );
@@ -63,4 +69,4 @@ class GroupMatches extends React.Component {
 }
 
 
-export default reduxForm({form: 'user', destroyOnUnmount: false})(GroupMatches);
+export default reduxForm({form: 'groupA', destroyOnUnmount: false})(GroupMatches);

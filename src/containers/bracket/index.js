@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, getFormValues } from 'redux-form'
 import Bracket from '../bracket'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -9,18 +9,36 @@ import {
   increment,
   decrement,
 } from '../../modules/counter'
-import addData from '../../modules/user'
+import { addBracketToDB, getBrackets } from '../../services/dynamo'
+
 
 const slideComponents = [
   UserInfo,
   GroupMatches,
 ]
 
+const finalStep = 1;
+
 class BracketContainer extends React.Component {
 
   submit = values => {
     // print the form values to the console
-    this.props.increment();
+    console.log(this.props.formValues)
+    if (this.props.step >= finalStep) {
+      console.log('take data to database');
+      console.log(values);
+      console.log(JSON.stringify(values));
+      addBracketToDB(JSON.stringify(values))
+        .then(() => {
+          console.log('finished call');
+        })
+    } else {
+      this.props.increment();
+    }
+  }
+
+  prevStep = () => {
+    this.props.decrement();
   }
 
   componentDidMount() {
@@ -32,17 +50,15 @@ class BracketContainer extends React.Component {
     console.log('CURRENT STEP: ' + currentStep);
     let RenderingComponent;
     if (currentStep > 0) {
-      //console.log(' ============= ');
       RenderingComponent = slideComponents[1];
     } else {
-      // console.log(' ++++++++++++++ ');
       RenderingComponent = slideComponents[0];
     }
     return(
       <div className="bracket__container">
         <h1 className="heading--center">Bracket Container</h1>
         <div>
-          <RenderingComponent onSubmit={this.submit} step={currentStep}/>
+          <RenderingComponent onSubmit={this.submit} step={currentStep} finalStep={finalStep} prevStep={this.prevStep}/>
         </div>
       </div>
     );
@@ -51,10 +67,12 @@ class BracketContainer extends React.Component {
 
 const mapStateToProps = state => ({
   step: state.counter.count,
+  formValues: getFormValues('user')(state)
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   increment,
+  decrement
 }, dispatch)
 
 export default connect(
