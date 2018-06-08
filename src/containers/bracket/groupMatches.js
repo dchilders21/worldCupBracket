@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import matches from '../../matches_temp'
+import matches from '../../matches'
 
 class GroupMatches extends React.Component {
   componentDidMount() {
