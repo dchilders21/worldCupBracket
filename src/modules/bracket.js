@@ -2,6 +2,7 @@ export const ADD_DATA = 'user/ADD_DATA'
 
 const initialState = {
   user: {},
+  matches: {}
 }
 
 export default (state = initialState, action) => {
@@ -9,7 +10,8 @@ export default (state = initialState, action) => {
     case ADD_DATA:
       return {
         ...state,
-        user: state.user
+        user: action.payload.user,
+        matches: action.payload.matches
       }
 
     default:
@@ -17,10 +19,11 @@ export default (state = initialState, action) => {
   }
 }
 
-export const addData = () => {
+export const addData = (data) => {
   return dispatch => {
     dispatch({
-      type: ADD_DATA
+      type: ADD_DATA,
+      payload: data
     })
   }
 }

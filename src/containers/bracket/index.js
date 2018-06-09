@@ -1,14 +1,18 @@
 import React from 'react'
-import { Field, reduxForm, getFormValues } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import Bracket from '../bracket'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import UserInfo from './userInfo'
 import GroupMatches from './groupMatches'
+import FindBracket from '../findBracket'
+import matches from '../../matches_temp'
 import {
   increment,
   decrement,
 } from '../../modules/counter'
+import { addData }from '../../modules/bracket'
 import { addBracketToDB, getBrackets } from '../../services/dynamo'
 
 
@@ -17,24 +21,85 @@ const slideComponents = [
   GroupMatches,
 ]
 
-const finalStep = 1;
+const finalStep = 2;
 
 class BracketContainer extends React.Component {
 
+  toTitleCase = str => {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
+  formatData = data => {
+    var newData = {
+      "user": {
+        "paid": {}
+      }
+    }
+
+    var groupsLegend = {
+      "A" : 0,
+      "B" : 1,
+      "C" : 2,
+      "D" : 3,
+      "E" : 4,
+      "F" : 5,
+      "G" : 6,
+      "H" : 7,
+    }
+
+    // Loop through the data in the form store
+    for (var d in data) {
+      var key, group, matchNumber, team, letter;
+
+      // user object
+      if (d.includes("user")) {
+        key = d.replace("user_", "");
+        newData.user[key] = data[d];
+      } else {
+        letter = d.substring(5, 6);
+        group = d.substring(0, 6);
+        matchNumber = d.substring(7, 13);
+        team = d.substring(14);
+        team = team.replace(/_/g, ' ');
+        team = this.toTitleCase(team);
+        matches[groupsLegend[letter]][group][matchNumber][team] = data[d];
+      }
+    }
+    console.log(matches);
+    console.log( ' ============ ');
+    console.log(newData);
+    newData['matches'] = matches;
+    this.props.addData(newData);
+    return newData;
+  }
+
   submit = values => {
     // print the form values to the console
-    console.log(this.props.formValues)
     if (this.props.step >= finalStep) {
       console.log('take data to database');
       console.log(values);
-      console.log(JSON.stringify(values));
-      addBracketToDB(JSON.stringify(values))
+      var data = this.formatData(values);
+      addBracketToDB(JSON.stringify(data))
         .then(() => {
-          console.log('finished call');
+          this.props.goToConfirmation();
+          console.log('finished call, not necessarily a success');
         })
     } else {
       this.props.increment();
     }
+  }
+
+  findEmail = values => {
+    getBrackets(values.findEmail)
+      .then(response => {
+        console.log(response.data.brackets);
+        this.props.addData(response.data.brackets[0]);
+        this.props.goToConfirmation();
+        console.log('finished call, not necessarily a success');
+      })
+
   }
 
   prevStep = () => {
@@ -46,8 +111,6 @@ class BracketContainer extends React.Component {
   }
   render() {
     const currentStep = this.props.step;
-    //const currentStep = 1;
-    console.log('CURRENT STEP: ' + currentStep);
     let RenderingComponent;
     if (currentStep > 0) {
       RenderingComponent = slideComponents[1];
@@ -56,9 +119,14 @@ class BracketContainer extends React.Component {
     }
     return(
       <div className="bracket__container">
-        <h1 className="heading--center">Bracket Container</h1>
         <div>
-          <RenderingComponent onSubmit={this.submit} step={currentStep} finalStep={finalStep} prevStep={this.prevStep}/>
+          <h1 className="heading--center">Bracket Container</h1>
+          <div>
+            <RenderingComponent onSubmit={this.submit} step={currentStep} finalStep={finalStep} prevStep={this.prevStep}/>
+          </div>
+        </div>
+        <div>
+          <FindBracket onSubmit={this.findEmail} />
         </div>
       </div>
     );
@@ -66,13 +134,14 @@ class BracketContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  step: state.counter.count,
-  formValues: getFormValues('user')(state)
+  step: state.counter.count
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   increment,
-  decrement
+  decrement,
+  addData,
+  goToConfirmation: () => push('/confirmation')
 }, dispatch)
 
 export default connect(

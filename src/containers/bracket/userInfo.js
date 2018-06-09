@@ -7,21 +7,21 @@ let UserInfo = props => {
     <div className="userInfo__container">
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="user_fullName">Full Name</label>
           <div>
-            <Field name="fullName" component="input" type="text" />
+            <Field name="user_fullName" component="input" type="text" />
           </div>
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="user_email">Email</label>
           <div>
-            <Field name="email" component="input" type="email" />
+            <Field name="user_email" component="input" type="email" />
           </div>
         </div>
         <div>
-          <label htmlFor="bracketName">Bracket Name</label>
+          <label htmlFor="user_bracketName">Bracket Name</label>
           <div>
-            <Field name="bracketName" component="input" type="text" />
+            <Field name="user_bracketName" component="input" type="text" />
           </div>
         </div>
         <button type="submit" className="user__submit-btn">Next</button>

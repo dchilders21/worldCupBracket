@@ -26,5 +26,33 @@
 				"Egypt": ""
 			}
 		}
+	},
+	{
+		"groupB": {
+			"match1": {
+				"Morocco": "",
+				"Ir Iran": ""
+			},
+			"match2": {
+				"Portugal": "",
+				"Spain": ""
+			},
+			"match3": {
+				"Portugal": "",
+				"Morocco": ""
+			},
+			"match4": {
+				"Ir Iran": "",
+				"Spain": ""
+			},
+			"match5": {
+				"Spain": "",
+				"Morocco": ""
+			},
+			"match6": {
+				"Ir Iran": "",
+				"Portugal": ""
+			}
+		}
 	}
 ]

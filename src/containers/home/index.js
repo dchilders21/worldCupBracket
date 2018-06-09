@@ -9,9 +9,7 @@ import {
   decrement,
   decrementAsync
 } from '../../modules/counter'
-import {
-  addData
-} from '../../modules/user'
+
 import BracketContainer from '../bracket';
 
 class Home extends React.Component {
@@ -25,7 +23,6 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user.user,
   count: state.counter.count,
   isIncrementing: state.counter.isIncrementing,
   isDecrementing: state.counter.isDecrementing
@@ -36,7 +33,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   incrementAsync,
   decrement,
   decrementAsync,
-  addData,
   changePage: () => push('/about-us')
 }, dispatch)
 

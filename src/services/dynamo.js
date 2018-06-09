@@ -9,13 +9,19 @@ export async function addBracketToDB(data) {
 }
 
 export async function getBrackets(data) {
+  console.log(data);
   const response = await axios.get(
-    `https://2d9sav519f.execute-api.us-west-1.amazonaws.com/dev/todos/`)
-    .then(function (response) {
+    `https://2d9sav519f.execute-api.us-west-1.amazonaws.com/dev/todos/`, {
+      params: {
+        email: data
+      }
+    });
+    return response;
+    /*.then(function (response) {
       console.log(response);
       return response;
     })
     .catch(function (error) {
       console.log(error);
-    });
+    });*/
   }
