@@ -12,6 +12,58 @@
     font-weight: 300;
 }
 
+.scoreBox {
+  width: 30px;
+  border: 1px #999 solid;
+}
+
+.inputError {
+  color: #ff0000;
+}
+
+.groupRound {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: row;
+ flex-wrap: wrap;
+ flex-flow: row wrap;
+ align-content: flex-end;
+ margin-top: 10px;
+}
+
+.groupBox {
+  flex-basis: 25%;
+  margin-top: 40px;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.user__div {
+  margin: 10px;
+}
+
+.findEmail__container {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.findEmail__group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.findDiv {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
 .flex-center-container {
   display: flex;
   justify-content: center;
@@ -24,7 +76,10 @@
 }
 
 .flex-center-container p {
+  font-size: 12px;
   margin: 0;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .flex-column-container {
@@ -67,4 +122,65 @@
 .userInfo__container label {
   text-align: center;
   width: 100%;
+}
+
+.finishButton {
+  background: #000 none repeat scroll 0 0;
+  border-radius: 16px;
+  color: #FFF !important;
+  display: inline-block !important;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 15px 50px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.findButton {
+  padding: 10px 15px;
+}
+
+
+.arrowCentered {
+  margin: 20px auto !important;
+}
+
+.leftArrow {
+  background: #000 url(images/left-arrow.png);
+  background-position: 14px 18px;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.leftArrow a {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.rightArrow {
+  background: #000 url(images/right-arrow.png);
+  background-position: 14px 18px;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.rightArrow a {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.nextPrev {
+  margin-top: 20px;
 }

@@ -1,31 +1,50 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { required, email } from './../../services/validations';
+
 
 let UserInfo = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting, error } = props
+
+  const renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error, warning }
+  }) => (
+    <div>
+        <label>{label}{touched &&
+          ((error && <span className="inputError">{error}</span>) ||
+            (warning && <span>{warning}</span>))}</label>
+        <input {...input} type={type} />
+    </div>
+  )
+
   return (
     <div className="userInfo__container">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="user_fullName">Full Name</label>
+        <div className="user__div">
           <div>
-            <Field name="user_fullName" component="input" type="text" />
+            <Field name="user_fullName" label="Full Name" component={renderField} type="text" validate={[required]}/>
           </div>
         </div>
-        <div>
-          <label htmlFor="user_email">Email</label>
+        <div className="user__div">
           <div>
-            <Field name="user_email" component="input" type="email" />
+            <Field name="user_email" label="Email" component={renderField} type="email" validate={[required, email]}/>
           </div>
         </div>
-        <div>
-          <label htmlFor="user_bracketName">Bracket Name</label>
+        <div className="user__div">
           <div>
-            <Field name="user_bracketName" component="input" type="text" />
+            <Field name="user_bracketName" label="Bracket Name" component={renderField} type="text" validate={[required]}/>
           </div>
         </div>
-        <button type="submit" className="user__submit-btn">Next</button>
+        <span>{error}</span>
+        <div className="arrowCentered rightArrow">
+          <a onClick={handleSubmit}>
+          </a>
+        </div>
       </form>
+      {error}
     </div>
   )
 }

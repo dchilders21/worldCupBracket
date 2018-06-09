@@ -7,6 +7,7 @@ import App from './containers/app'
 
 import './index.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 const target = document.querySelector('#root')
 

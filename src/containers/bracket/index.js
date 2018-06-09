@@ -7,7 +7,8 @@ import { push } from 'react-router-redux'
 import UserInfo from './userInfo'
 import GroupMatches from './groupMatches'
 import FindBracket from '../findBracket'
-import matches from '../../matches_temp'
+import TableCalculator from '../tableCalculator'
+import matches from '../../matches'
 import {
   increment,
   decrement,
@@ -21,7 +22,7 @@ const slideComponents = [
   GroupMatches,
 ]
 
-const finalStep = 2;
+const finalStep = 8;
 
 class BracketContainer extends React.Component {
 
@@ -120,14 +121,14 @@ class BracketContainer extends React.Component {
     return(
       <div className="bracket__container">
         <div>
-          <h1 className="heading--center">Bracket Container</h1>
           <div>
             <RenderingComponent onSubmit={this.submit} step={currentStep} finalStep={finalStep} prevStep={this.prevStep}/>
           </div>
+          <div>
+            <TableCalculator />
+          </div>
         </div>
-        <div>
-          <FindBracket onSubmit={this.findEmail} />
-        </div>
+        <FindBracket onSubmit={this.findEmail} />
       </div>
     );
   }

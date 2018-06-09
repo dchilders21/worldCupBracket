@@ -2,31 +2,51 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import matches from '../../matches_temp'
+import matches from '../../matches'
+import { required, number } from './../../services/validations';
 
 class GroupMatches extends React.Component {
   componentDidMount() {
     // console.log(this.props.step);
   }
 
+
   render() {
-    const { handleSubmit, pristine, reset, submitting, finalStep, prevStep } = this.props
+    const { handleSubmit, pristine, reset, submitting, finalStep, prevStep, error } = this.props
     const currentStep = this.props.step - 1;
 
+    const renderField = ({
+      input,
+      label,
+      type,
+      field,
+      meta: { touched, error, warning }
+    }) => (
+      <div>
+          <label>{touched &&
+            ((error && <span className="inputError">{error}</span>) ||
+              (warning && <span>{warning}</span>))}</label>
+          <input {...input} type={type} className="group__input" maxLength="1" />
+      </div>
+    )
+
     const button = (this.props.step == finalStep) ? (
-      <button type="submit">Finish</button>
+      <a className="finishButton" onClick={handleSubmit}>Finish
+      </a>
     ) : (
-      <button type="submit">Next</button>
+      <div className="rightArrow">
+        <a onClick={handleSubmit}>
+        </a>
+      </div>
     );
 
     return(
       <div>
-        <h1>Group {currentStep}</h1>
           {
             Object.keys(matches[currentStep]).map(function(group, i){
               return (
                 <div key={i}>
-                <p>{group}</p>
+                <h1>Group {group.slice(-1)}</h1>
                 <form onSubmit={handleSubmit}>
                   <div className="flex-center-container">
                     {Object.keys(matches[currentStep][group]).map(function(match, id){
@@ -42,7 +62,7 @@ class GroupMatches extends React.Component {
                               <p>{team}</p>
                             </div>
                             <div>
-                              <Field name={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`} component="input" type="text" className="group__input" />
+                              <Field name={`${group}_${match}_${team.replace(/\s+/g, '_').toLowerCase()}`} component={renderField} validate={[required, number]} type="text" />
                             </div>
                             {!(idx % 2) && <div className="group__divisor">:</div>}
                           </div>
@@ -51,11 +71,15 @@ class GroupMatches extends React.Component {
                       );})}
                       </div>
                   {((currentStep - 1) < finalStep) &&
-                    <a onClick={prevStep}>
-                      Previous
-                    </a>
+                    <div className="flex-center-container nextPrev">
+                      <div className="leftArrow">
+                        <a onClick={prevStep}>
+                        </a>
+                      </div>
+                      {button}
+                    </div>
                   }
-                  {button}
+
                   </form>
                 </div>
               );

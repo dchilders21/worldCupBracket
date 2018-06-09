@@ -5,14 +5,15 @@ let findBracket = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <div className="findEmail__container">
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form>
+        <div className="findEmail__group">
           <label htmlFor="findEmail">Email</label>
-          <div>
+          <div className="findDiv">
             <Field name="findEmail" component="input" type="email" />
           </div>
+          <a className="findButton finishButton" onClick={handleSubmit}>Find
+          </a>
         </div>
-        <button type="submit" className="user__submit-btn">Find</button>
       </form>
     </div>
   )
