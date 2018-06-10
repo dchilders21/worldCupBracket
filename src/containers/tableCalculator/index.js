@@ -48,7 +48,7 @@ class TableCalculator extends React.Component {
 
         // add stats to team and push the team to
         if (!(team in results)) {
-          results[team] = stats;
+          results[team] = {...stats};
         }
         //console.log(results);
         //console.log('the top is results');
@@ -73,8 +73,7 @@ class TableCalculator extends React.Component {
       //console.log(score1);
       //console.log(score2);
       //console.log(' ============== ');
-
-      if ((score1 != "") && (score2 != "")) {
+      if ((score1 !== "") && (score2 !== "")) {
         console.log("< ======== >")
         console.log(team1);
         console.log('calculate stats');
