@@ -7,7 +7,6 @@ import { push } from 'react-router-redux'
 import UserInfo from './userInfo'
 import GroupMatches from './groupMatches'
 import FindBracket from '../findBracket'
-import TableCalculator from '../tableCalculator'
 import matches from '../../matches'
 import {
   increment,
@@ -123,9 +122,6 @@ class BracketContainer extends React.Component {
         <div>
           <div>
             <RenderingComponent onSubmit={this.submit} step={currentStep} finalStep={finalStep} prevStep={this.prevStep}/>
-          </div>
-          <div>
-            <TableCalculator />
           </div>
         </div>
         <FindBracket onSubmit={this.findEmail} />

@@ -4,7 +4,7 @@ export const DECREMENT_REQUESTED = 'counter/DECREMENT_REQUESTED'
 export const DECREMENT = 'counter/DECREMENT'
 
 const initialState = {
-  count: 0,
+  count: 1,
   isIncrementing: false,
   isDecrementing: false
 }

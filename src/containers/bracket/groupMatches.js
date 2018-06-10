@@ -1,7 +1,8 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, formValueSelector, getFormValues } from 'redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import TableCalculator from '../tableCalculator'
 import matches from '../../matches'
 import { required, number } from './../../services/validations';
 
@@ -12,7 +13,7 @@ class GroupMatches extends React.Component {
 
 
   render() {
-    const { handleSubmit, pristine, reset, submitting, finalStep, prevStep, error } = this.props
+    const { handleSubmit, pristine, reset, submitting, finalStep, prevStep, error, formValues } = this.props
     const currentStep = this.props.step - 1;
 
     const renderField = ({
@@ -81,14 +82,22 @@ class GroupMatches extends React.Component {
                   }
 
                   </form>
+                  <TableCalculator formValues={formValues} groupName={group}/>
                 </div>
+
               );
             })
           }
+
       </div>
     );
   }
 }
+
+const selector = getFormValues('user')
+GroupMatches = connect( state => ({ formValues: selector(state) }) )(GroupMatches)
+
+
 
 
 export default reduxForm({form: 'user', destroyOnUnmount: false})(GroupMatches);
