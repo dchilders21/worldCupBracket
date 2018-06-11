@@ -19,14 +19,16 @@ class GroupMatches extends React.Component {
   }
 
   onChangeField = e => {
-    // this.refs[1].focus();
+    if (this.state.currentField < (this.refs.length - 1) && Number.isInteger(parseInt(e.target.value))) {
     this.setState((prevState) => ({
       currentField: prevState.currentField + 1
     }), () => {
-      if (this.state.currentField < this.refs.length)
         this.refs[this.state.currentField].focus();
     });
+  }
   };
+
+  resetFieldFocus = () => this.setState({ currentField: 0 });
 
   setRef = (element) => {
     //console.log(this.refs, 'REF')
@@ -48,7 +50,6 @@ class GroupMatches extends React.Component {
     </div>
   )
 
-
   render() {
     const { handleSubmit, pristine, reset, submitting, finalStep, prevStep, error, formValues } = this.props
     const currentStep = this.props.step - 1;
@@ -59,11 +60,10 @@ class GroupMatches extends React.Component {
       </a>
     ) : (
       <div className="rightArrow">
-        <a onClick={handleSubmit}>
+        <a onClick={(e) => {handleSubmit(e); this.props.reset(); this.resetFieldFocus()}}>
         </a>
       </div>
     );
-
     return(
       <div>
           {
@@ -107,7 +107,7 @@ class GroupMatches extends React.Component {
                   }
 
                   </form>
-                  <TableCalculator formValues={formValues} groupName={group}/>
+                  <TableCalculator formValues={{...formValues}} groupName={group}/>
                 </div>
 
               );

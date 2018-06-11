@@ -18,8 +18,6 @@ class TableCalculator extends React.Component {
   render() {
     const { handleSubmit, pristine, reset, submitting, finalStep, prevStep, formValues, groupName } = this.props
     const stats = {
-      rank: 0,
-      team: '',
       pl: 0,
       w: 0,
       d: 0,
@@ -32,21 +30,14 @@ class TableCalculator extends React.Component {
 
     let groupMatches;
     let results = {};
-    let data = [];
-
-    console.log(matches);
 
     // Only pull in the relevant group from matches
     for (var m in matches) {
       if (Object.keys(matches[m])[0] == groupName) {
-        console.log(groupName);
-        //groupMatches = matches[m][groupName]
-        console.log(matches[m][groupName]);
-        groupMatches = Object.assign({}, matches[m][groupName]);
+        groupMatches = [...matches][m][groupName];
       }
     }
-    //console.log(groupMatches);
-    //console.log(formValues)
+
     // Using 'matches' layout
     for (var d in formValues) {
       if (!(d.includes("user"))) {
@@ -58,31 +49,49 @@ class TableCalculator extends React.Component {
         // add stats to team and push the team to
         if (!(team in results)) {
           results[team] = {...stats};
-          results[team].team = team;
         }
-
+        //console.log(results);
+        //console.log('the top is results');
+        console.log('VAMOS A VERRRRRRR', formValues[d])
+        console.log('VAMOS A VERRRRRRR 2222 ', groupMatches)
         groupMatches[matchNumber][team] = formValues[d];
       }
     }
 
-    // Calculating the stats for the teams
+    //console.log(groupMatches);
+    console.log( " -------- begin ------- ")
+    console.log(results);
+
     for (var match in groupMatches) {
 
+      console.log(groupMatches[match]);
+      // If both teasms are entered
       const team1 = Object.keys(groupMatches[match])[0];
       const team2 = Object.keys(groupMatches[match])[1];
-
+      //console.log(team1);
+      //console.log(team2);
       const score1 = groupMatches[match][team1];
       const score2 = groupMatches[match][team2];
-
-      // If both teams are entered
+      //console.log(score1);
+      //console.log(score2);
+      //console.log(' ============== ');
       if ((score1 !== "") && (score2 !== "")) {
-
+        console.log("< ======== >")
+        console.log(team1);
+        console.log('calculate stats');
+        console.log(results);
+        //console.log(results[team1]['pl']);
+        //console.log(results[team2]['pl']);
         // Goals For/Goals Against
-        results[team1].pl += 1;
-        results[team2].pl += 1;
-
-        results[team1]['gf'] += Number(score1), results[team1]['ga'] += Number(score2);
-        results[team2]['ga'] += Number(score1), results[team2]['gf'] += Number(score2);
+        console.log(team1);
+        results[team1].pl+= 1;
+        console.log(results);
+        console.log("< ======== if end ===== >")
+        console.log('MATCHESSSSS', matches);
+        //console.log(results[team2]['pl']);
+        //console.log(results[team1]['pl']);
+        /*results[team1]['gf'] += score1, results[team1]['ga'] += score2;
+        results[team2]['ga'] += score1, results[team2]['gf'] += score2;
 
         // Goal Differential
         results[team1]['gd'] = results[team1]['gf'] - results[team1]['ga'];
@@ -102,28 +111,36 @@ class TableCalculator extends React.Component {
         } else {
           results[team1]['d']++, results[team2]['d']++;
           results[team1]['pt'] += 1, results[team2]['pt'] += 1;
-        }
+        }*/
       }
     }
 
-    // Putting the data in the format the table needs
-    for (var r in results) {
-      data.push(results[r]);
-    }
+    console.log( " --------------- ")
+    console.log(results);
+    console.log('-------- end -------- ')
 
-    // Sort the data by Points then if a tie by Goal Differential
-    data.sort(function(obj1, obj2) {
-     if (obj2.pt == obj1.pt) {
-       return obj2.gd - obj1.gd;
-     } else {
-       return obj2.pt - obj1.pt;
-     }
-   });
+    const data = [{
+      rank: 1,
+      team: "Russia",
+      pl: 1,
+      w: 1,
+      d: 2,
+      l: 1,
+      pt: 3,
+      gf: 2,
+      ga: 1,
+      gd: 3
+    }];
 
-   // Loop to set the rank attribute to the index it's in the array
-   for (var i in data) {
-     data[i].rank = i;
-   }
+    /*const products = [{
+        id: 1,
+        name: "Product1",
+        price: 120
+    }, {
+        id: 2,
+        name: "Product2",
+        price: 80
+    }];*/
 
     return(
       <div>
