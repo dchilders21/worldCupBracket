@@ -70,9 +70,11 @@ class GroupMatches extends React.Component {
             Object.keys(matches[currentStep]).map(function(group, i){
               //console.log(matches[currentStep])
               return (
-                <div key={i}>
+                <div key={i} className="row">
                 <h1>Group {group.slice(-1)}</h1>
+                <div className="row col-md-6">
                 <form onSubmit={handleSubmit}>
+
                   <div className="flex-center-container">
                     {Object.keys(matches[currentStep][group]).map(function(match, id){
                       console.log(matches[currentStep][group][match]);
@@ -105,9 +107,11 @@ class GroupMatches extends React.Component {
                       {button}
                     </div>
                   }
-
                   </form>
+                  </div>
+                  <div className="row col-md-4">
                   <TableCalculator formValues={{...formValues}} groupName={group}/>
+                  </div>
                 </div>
 
               );

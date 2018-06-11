@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import UserInfo from './userInfo'
 import GroupMatches from './groupMatches'
-import FindBracket from '../findBracket'
 import matches from '../../matches'
 import {
   increment,
@@ -91,17 +90,6 @@ class BracketContainer extends React.Component {
     }
   }
 
-  findEmail = values => {
-    getBrackets(values.findEmail)
-      .then(response => {
-        console.log(response.data.brackets);
-        this.props.addData(response.data.brackets[0]);
-        this.props.goToConfirmation();
-        console.log('finished call, not necessarily a success');
-      })
-
-  }
-
   prevStep = () => {
     this.props.decrement();
   }
@@ -124,7 +112,6 @@ class BracketContainer extends React.Component {
             <RenderingComponent onSubmit={this.submit} step={currentStep} finalStep={finalStep} prevStep={this.prevStep}/>
           </div>
         </div>
-        <FindBracket onSubmit={this.findEmail} />
       </div>
     );
   }

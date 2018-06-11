@@ -12,6 +12,15 @@
     font-weight: 300;
 }
 
+h1 {
+  margin-bottom: 20px !important;
+}
+
+h4 {
+  margin-bottom: 20px !important;
+}
+
+
 .scoreBox {
   width: 30px;
   border: 1px #999 solid;
@@ -22,7 +31,7 @@
 }
 
 .instructions {
-  margin: 0 auto !important;
+  margin: 0px auto !important;
 }
 
 .groupRound {
