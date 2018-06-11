@@ -47,7 +47,6 @@ class TableCalculator extends React.Component {
         var team = d.substring(14);
         team = team.replace(/_/g, ' ');
         team = this.toTitleCase(team);
-
         // add stats to team and push the team to
         if (!(team in results)) {
           results[team] = {...stats};
@@ -55,8 +54,6 @@ class TableCalculator extends React.Component {
         }
         //console.log(results);
         //console.log('the top is results');
-        console.log('VAMOS A VERRRRRRR', formValues[d])
-        console.log('VAMOS A VERRRRRRR 2222 ', groupMatches)
         groupMatches[matchNumber][team] = formValues[d];
       }
     }
@@ -75,12 +72,14 @@ class TableCalculator extends React.Component {
       //console.log(team2);
       const score1 = groupMatches[match][team1];
       const score2 = groupMatches[match][team2];
-      //console.log(score1);
-      //console.log(score2);
+      // console.log(score1);
+      // console.log(score2);
       //console.log(' ============== ');
       if ((score1 !== "") && (score2 !== "")) {
         // Goals For/Goals Against
-        console.log(team1);
+        // console.log(team1);
+        results[team1] = {...stats};
+        results[team2] = {...stats};
         results[team1].pl+= 1;
         results[team2].pl += 1;
         console.log(results);

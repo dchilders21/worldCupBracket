@@ -6,7 +6,11 @@ import { getAllBrackets } from '../../services/dynamo'
 import { addData }from '../../modules/bracket'
 
 class ScoreBoard extends React.Component {
+  state = {
+    data: []
+  }
   componentDidMount() {
+    this.findScores();
     // console.log(this.props.step);
   }
 
@@ -16,14 +20,9 @@ class ScoreBoard extends React.Component {
       .then(response => {
         console.log(response.data.brackets);
         console.log(response.data.brackets[0]);
-        // return response.data.brackets
+        this.setState({ data: response.data.brackets})
         return ['test', 'test 2', 'test 3']
       })
-    return (
-      <div>
-        <div>User</div>
-      </div>
-    );
   }
 
   render() {
@@ -34,7 +33,7 @@ class ScoreBoard extends React.Component {
 
     return(
       <div>
-        {this.findScores()}
+        {this.state.data && this.state.data}
       </div>
     );
   }

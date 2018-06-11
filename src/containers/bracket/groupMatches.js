@@ -60,7 +60,7 @@ class GroupMatches extends React.Component {
       </a>
     ) : (
       <div className="rightArrow">
-        <a onClick={(e) => {handleSubmit(e); this.props.reset(); this.resetFieldFocus()}}>
+        <a onClick={(e) => {handleSubmit(e); reset(); this.resetFieldFocus()}}>
         </a>
       </div>
     );
