@@ -18,14 +18,32 @@ class Home extends React.Component {
   constructor () {
     super()
     this.state = {
-      isHidden: true
+      isHidden: true,
+      groupInstructions: true,
+      knockoutInstructions: true,
+      notesInstructions: true,
     }
   }
   toggleHidden () {
    this.setState({
      isHidden: !this.state.isHidden
    })
- }
+  }
+  toggleGroup () {
+   this.setState({
+     groupInstructions: !this.state.groupInstructions
+   })
+  }
+  toggleKnockout () {
+   this.setState({
+     knockoutInstructions: !this.state.knockoutInstructions
+   })
+  }
+  toggleNotes () {
+   this.setState({
+     notesInstructions: !this.state.notesInstructions
+   })
+  }
 
  startBracket = values => {
    console.log('startBracket')
@@ -62,9 +80,9 @@ class Home extends React.Component {
 
           <div className="row col-md-6 instructions">
 
-            <p>Scoring for the Group Round... <span onClick={this.toggleHidden.bind(this)}>here</span></p>
+            <p>Scoring for the Group Round... <span onClick={this.toggleGroup.bind(this)}>here</span></p>
 
-            {!this.state.isHidden &&
+            {!this.state.groupInstructions &&
             <div>
               <p>For each match you can earn a total of 40 points.</p>
               <ul>
@@ -86,8 +104,8 @@ class Home extends React.Component {
             </div>
 
             <div className="row col-md-6 instructions">
-            <p>Scoring for the Knockout Round...<div>here</div></p>
-            {!this.state.isHidden &&
+            <p>Scoring for the Knockout Round...<span onClick={this.toggleKnockout.bind(this)}>here</span></p>
+            {!this.state.knockoutInstructions &&
             <div>
               You’ll need to come back to the site to complete the brackets.  Meaning your picks for who qualifies out of the group stages does not carry over.
             </div>
@@ -96,8 +114,8 @@ class Home extends React.Component {
 
 
           <div className="row col-md-6 instructions">
-            <p>Other Important Notes...<div>here</div></p>
-            {!this.state.isHidden &&<div>
+            <p>Other Important Notes...<span onClick={this.toggleNotes.bind(this)}>here</span></p>
+            {!this.state.notesInstructions &&<div>
               <p>Also note that I am not participating in the bracket but only hosting it.  I’m trying to make something easy and simple that will help people enjoy the World Cup a little more.  </p>
               <p>DEADLINE to enter into the tournament is before the first game kickoff.  Send this to as many people as you want.  You must have completed all 4 steps (most importantly sending your money) in order for it to count. </p>
               <p>Any questions or comments or issues you see with the site,  email me at chnkyfire@gmail.com.  I’ll probably read it and may or may not get back to you.</p>
