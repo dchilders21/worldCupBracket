@@ -12,7 +12,7 @@ import {
   decrement,
 } from '../../modules/counter'
 import { addData }from '../../modules/bracket'
-import { addBracketToDB, getBrackets } from '../../services/dynamo'
+import { addBracketToDB } from '../../services/dynamo'
 
 
 const slideComponents = [

@@ -35,7 +35,7 @@ class Home extends React.Component {
  findEmail = values => {
    getBrackets(values.findEmail)
      .then(response => {
-       console.log(response.data.brackets);
+       console.log(response.data);
        this.props.addData(response.data.brackets[0]);
        this.props.goToConfirmation();
        console.log('finished call, not necessarily a success');
