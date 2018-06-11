@@ -8,6 +8,13 @@ export async function addBracketToDB(data) {
   return response;
 }
 
+export async function getAllBrackets() {
+  const response = await axios.get(
+    `https://2d9sav519f.execute-api.us-west-1.amazonaws.com/dev/todos/`
+  );
+  return response;
+}
+
 export async function getBrackets(data) {
   console.log(data);
   const response = await axios.get(

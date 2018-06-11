@@ -67,9 +67,7 @@ class BracketContainer extends React.Component {
         matches[groupsLegend[letter]][group][matchNumber][team] = data[d];
       }
     }
-    console.log(matches);
-    console.log( ' ============ ');
-    console.log(newData);
+
     newData['matches'] = matches;
     this.props.addData(newData);
     return newData;

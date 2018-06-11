@@ -29,7 +29,7 @@ class GroupMatches extends React.Component {
   };
 
   setRef = (element) => {
-    console.log(this.refs, 'REF')
+    //console.log(this.refs, 'REF')
     this.refs = [...this.refs, element];
   }
 
