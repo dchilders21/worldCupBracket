@@ -21,6 +21,10 @@
   color: #ff0000;
 }
 
+.instructions {
+  margin: 0 auto !important;
+}
+
 .groupRound {
  display: flex;
  align-items: center;
@@ -35,6 +39,15 @@
 .groupBox {
   flex-basis: 25%;
   margin-top: 40px;
+}
+
+ul {
+  text-align: left;
+}
+
+li {
+  text-decoration: none;
+  list-style-type:none
 }
 
 .App {

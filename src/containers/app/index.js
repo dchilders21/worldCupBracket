@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import Home from '../home'
 import Confirmation from '../confirmation'
 import ScoreBoard from '../scoreBoard'
+import Bracket from '../bracket'
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         </header>
         <main>
           <Route exact path="/" component={Home} />
+          <Route exact path="/bracket" component={Bracket} />
           <Route exact path="/confirmation" component={Confirmation} />
           <Route exact path="/scoreboard" component={ScoreBoard} />
         </main>

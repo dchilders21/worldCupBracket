@@ -68,12 +68,14 @@ class GroupMatches extends React.Component {
       <div>
           {
             Object.keys(matches[currentStep]).map(function(group, i){
+              //console.log(matches[currentStep])
               return (
                 <div key={i}>
                 <h1>Group {group.slice(-1)}</h1>
                 <form onSubmit={handleSubmit}>
                   <div className="flex-center-container">
                     {Object.keys(matches[currentStep][group]).map(function(match, id){
+                      console.log(matches[currentStep][group][match]);
                       return (
                         <div key={id} className="flex-row" style={{display: 'flex'}}>
                         {Object.keys(matches[currentStep][group][match]).map(function(team, idx){

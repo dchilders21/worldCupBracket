@@ -34,13 +34,19 @@ class TableCalculator extends React.Component {
     let results = {};
     let data = [];
 
+    console.log(matches);
+
     // Only pull in the relevant group from matches
     for (var m in matches) {
       if (Object.keys(matches[m])[0] == groupName) {
-        groupMatches = matches[m][groupName]
+        console.log(groupName);
+        //groupMatches = matches[m][groupName]
+        console.log(matches[m][groupName]);
+        groupMatches = Object.assign({}, matches[m][groupName]);
       }
     }
-
+    //console.log(groupMatches);
+    //console.log(formValues)
     // Using 'matches' layout
     for (var d in formValues) {
       if (!(d.includes("user"))) {
@@ -104,29 +110,6 @@ class TableCalculator extends React.Component {
     for (var r in results) {
       data.push(results[r]);
     }
-    /*const data = [{
-      rank: 0,
-      team: "Russia",
-      pl: 1,
-      w: 1,
-      d: 2,
-      l: 1,
-      pt: 1,
-      gf: 2,
-      ga: 1,
-      gd: 3
-    }, {
-      rank: 0,
-      team: "Egypt",
-      pl: 1,
-      w: 1,
-      d: 2,
-      l: 1,
-      pt: 3,
-      gf: 2,
-      ga: 1,
-      gd: 3
-    }];*/
 
     // Sort the data by Points then if a tie by Goal Differential
     data.sort(function(obj1, obj2) {
