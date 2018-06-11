@@ -34,7 +34,7 @@ class TableCalculator extends React.Component {
     // Only pull in the relevant group from matches
     for (var m in matches) {
       if (Object.keys(matches[m])[0] == groupName) {
-        groupMatches = matches[m][groupName]
+        groupMatches = [...matches][m][groupName];
       }
     }
 
@@ -52,6 +52,8 @@ class TableCalculator extends React.Component {
         }
         //console.log(results);
         //console.log('the top is results');
+        console.log('VAMOS A VERRRRRRR', formValues[d])
+        console.log('VAMOS A VERRRRRRR 2222 ', groupMatches)
         groupMatches[matchNumber][team] = formValues[d];
       }
     }
@@ -85,6 +87,7 @@ class TableCalculator extends React.Component {
         results[team1].pl+= 1;
         console.log(results);
         console.log("< ======== if end ===== >")
+        console.log('MATCHESSSSS', matches);
         //console.log(results[team2]['pl']);
         //console.log(results[team1]['pl']);
         /*results[team1]['gf'] += score1, results[team1]['ga'] += score2;

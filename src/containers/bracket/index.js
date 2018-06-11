@@ -70,7 +70,7 @@ class BracketContainer extends React.Component {
     console.log(matches);
     console.log( ' ============ ');
     console.log(newData);
-    newData['matches'] = matches;
+    newData['matches'] = [...matches];
     this.props.addData(newData);
     return newData;
   }
